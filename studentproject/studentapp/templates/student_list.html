@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f3;
+      padding: 10px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .add-button {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+    .add-button a {
+      padding: 8px 12px;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background: #f8f9fa;
+    }
+    .actions a {
+      margin-right: 5px;
+      padding: 6px 10px;
+      color: white;
+      border-radius: 4px;
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .view { background: #17a2b8; }
+    .edit { background: #ffc107; }
+    .delete { background: #dc3545; }
+
+    /* Mobile view */
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+      thead { display: none; }
+      td {
+        position: relative;
+        padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid #ddd;
+      }
+      td::before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        content: attr(data-label);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Student List</h2>
+    <div class="add-button">
+        <a href="{% url 'student_create' %}">Add New Student</a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr>
+          <td data-label="Name">{{ student.name }}</td>
+          <td data-label="Phone">{{ student.phone }}</td>
+          <td data-label="Email">{{ student.email }}</td>
+          <td data-label="Actions" class="actions">
+            <a href="{% url 'student_detail' student.id %}" class="view">View</a>
+            <a href="{% url 'student_update' student.id %}" class="edit">Edit</a>
+            <a href="{% url 'student_delete' student.id %}" class="delete">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No students available.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

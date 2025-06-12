@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Student</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 {
+      color: #dc3545;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+    form {
+      margin-top: 30px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+    .confirm {
+      background-color: #dc3545;
+      color: white;
+    }
+    .cancel {
+      background-color: #6c757d;
+      color: white;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      p {
+        font-size: 16px;
+      }
+      button {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete <strong>{{ student.name }}</strong>?</p>
+    
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" class="confirm">Yes, Delete</button>
+      <a href="{% url 'student_list' %}">
+        <button type="button" class="cancel">Cancel</button>
+      </a>
+    </form>
+  </div>
+</body>
+</html>
