@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Student List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: #eef2f3;
-      padding: 10px;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
     }
     .container {
       max-width: 1000px;
       margin: auto;
-      background: #fff;
+      background: white;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     h2 {
       text-align: center;
+      margin-bottom: 20px;
       color: #333;
     }
     .add-button {
@@ -39,37 +43,48 @@
       margin-top: 10px;
     }
     th, td {
-      padding: 10px;
+      padding: 12px;
       text-align: left;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #ddd;
     }
     th {
-      background: #f8f9fa;
+      background-color: #f0f0f0;
+      font-weight: 600;
+    }
+    .actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
     }
     .actions a {
-      margin-right: 5px;
       padding: 6px 10px;
-      color: white;
       border-radius: 4px;
-      font-size: 13px;
+      font-size: 14px;
       text-decoration: none;
+      color: white;
     }
     .view { background: #17a2b8; }
-    .edit { background: #ffc107; }
+    .edit { background: #ffc107; color: #000; }
     .delete { background: #dc3545; }
 
-    /* Mobile view */
     @media (max-width: 768px) {
       table, thead, tbody, th, td, tr {
         display: block;
         width: 100%;
       }
-      thead { display: none; }
+      thead {
+        display: none;
+      }
+      tr {
+        margin-bottom: 15px;
+        background: #fafafa;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
       td {
-        position: relative;
         padding-left: 50%;
-        border: none;
-        border-bottom: 1px solid #ddd;
+        position: relative;
       }
       td::before {
         position: absolute;
@@ -78,6 +93,7 @@
         width: 45%;
         white-space: nowrap;
         font-weight: bold;
+        color: #666;
         content: attr(data-label);
       }
     }

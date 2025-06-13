@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Student Detail</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #eef1f5;
-            margin: 0;
-            padding: 20px;
-        }
-        .card {
-            max-width: 600px;
-            margin: auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .back {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Student Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: #444;
+    }
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+    @media (max-width: 480px) {
+      p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <h2>{{ student.name }}</h2>
-        <p><strong>Email:</strong> {{ student.email }}</p>
-        <p><strong>Phone:</strong> {{ student.phone }}</p>
-        <p><strong>Location:</strong> {{ student.location }}</p>
-        <p><strong>Date of Birth:</strong> {{ student.dob }}</p>
-        <p><strong>College:</strong> {{ student.college }}</p>
-        <p><strong>Degree:</strong> {{ student.degree }}</p>
-        <a class="back" href="{% url 'student_list' %}">← Back to List</a>
-    </div>
+  <div class="card">
+    <h2>{{ student.name }}</h2>
+    <p><strong>Email:</strong> {{ student.email }}</p>
+    <p><strong>Phone:</strong> {{ student.phone }}</p>
+    <p><strong>Location:</strong> {{ student.location }}</p>
+    <p><strong>Date of Birth:</strong> {{ student.dob }}</p>
+    <p><strong>College:</strong> {{ student.college }}</p>
+    <p><strong>Degree:</strong> {{ student.degree }}</p>
+    <a class="back" href="{% url 'student_list' %}">← Back to List</a>
+  </div>
 </body>
 </html>
